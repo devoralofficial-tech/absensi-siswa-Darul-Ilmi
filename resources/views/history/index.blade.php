@@ -30,7 +30,7 @@
                 <div style="display:flex;align-items:flex-end;gap:0.5rem">
                     <button type="submit" class="btn-primary" style="padding:0.7rem 1.125rem;font-size:0.825rem;border-radius:12px;border:none;cursor:pointer">
                         <svg style="width:15px;height:15px" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/></svg>
-                        Filter
+                        Cari
                     </button>
                     <a href="{{ route('history.index') }}" class="btn-secondary" style="padding:0.7rem 1.125rem;font-size:0.825rem;border-radius:12px">Reset</a>
                 </div>

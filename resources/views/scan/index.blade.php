@@ -89,13 +89,30 @@
 
         function onScanError(err) { /* silent */ }
 
-        function startScannerWithCamera(cameraId) {
-            scanner.start(cameraId, config, onScanSuccess, onScanError)
+        function startScanner(cameraSource) {
+            scanner.start(cameraSource, config, onScanSuccess, onScanError)
                 .then(() => {
                     statusEl.innerHTML = '<div style="width:8px;height:8px;background:#14b8a6;border-radius:50%;animation:pulseDot 1.5s infinite"></div> Kamera aktif';
+                    try {
+                        const activeId = scanner.getActiveCameraId();
+                        if (activeId && availableCameras.length > 0) {
+                            const idx = availableCameras.findIndex(c => c.id === activeId);
+                            if (idx !== -1) {
+                                currentCamIndex = idx;
+                            }
+                        }
+                    } catch (e) {}
                 })
                 .catch(err => { 
-                    statusEl.textContent = 'Gagal mengakses kamera.';
+                    if (cameraSource && typeof cameraSource === 'object' && cameraSource.facingMode) {
+                        if (availableCameras.length > 0) {
+                            startScanner(availableCameras[0].id);
+                        } else {
+                            statusEl.textContent = 'Gagal mengakses kamera.';
+                        }
+                    } else {
+                        statusEl.textContent = 'Gagal mengakses kamera.';
+                    }
                 });
         }
 
@@ -105,14 +122,20 @@
             if (scanner) {
                 statusEl.innerHTML = '<div style="width:8px;height:8px;background:#f59e0b;border-radius:50%"></div> Menukar kamera...';
                 scanner.stop().then(() => {
-                    startScannerWithCamera(availableCameras[currentCamIndex].id);
+                    startScanner(availableCameras[currentCamIndex].id);
                 }).catch(() => {
-                    startScannerWithCamera(availableCameras[currentCamIndex].id);
+                    startScanner(availableCameras[currentCamIndex].id);
                 });
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            if (!window.isSecureContext) {
+                statusEl.innerHTML = '<span style="color:#ef4444">Kamera diblokir (Koneksi Tidak Aman)</span>';
+                showError('Kamera hanya dapat diakses via HTTPS atau localhost. Silakan gunakan http://localhost:8000 atau aktifkan HTTPS di Laragon.');
+                return;
+            }
+
             scanner = new Html5Qrcode("qr-reader");
 
             Html5Qrcode.getCameras().then(cameras => {
@@ -122,13 +145,12 @@
                 }
                 
                 availableCameras = cameras;
-                currentCamIndex = cameras.length > 1 ? cameras.length - 1 : 0;
                 
                 if (cameras.length > 1) {
                     btnSwitch.style.display = 'inline-flex';
                 }
 
-                startScannerWithCamera(availableCameras[currentCamIndex].id);
+                startScanner({ facingMode: "environment" });
             }).catch(err => {
                 statusEl.textContent = 'Izin kamera ditolak.';
             });

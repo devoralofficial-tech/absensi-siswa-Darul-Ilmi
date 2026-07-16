@@ -41,7 +41,7 @@
                     </svg>
                 </div>
                 <div>
-                    <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:0.9rem;color:#0f172a;line-height:1.1">Absensi Siswa</p>
+                    <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:0.9rem;color:#0f172a;line-height:1.1">Absensi Siswa - SMP IT Darul Ilmi</p>
                     <p style="font-size:0.65rem;color:#0d9488;font-weight:600;letter-spacing:0.05em;text-transform:uppercase">QR Code System</p>
                 </div>
             </div>
