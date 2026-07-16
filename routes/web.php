@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('dashboard'));
 
-Route::get('/setup-db', function() {
-    \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--force' => true, '--seed' => true]);
-    return 'Database berhasil di-migrate dan di-seed di Vercel!';
-});
 require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {
