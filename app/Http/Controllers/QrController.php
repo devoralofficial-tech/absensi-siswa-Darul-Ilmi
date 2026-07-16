@@ -25,7 +25,7 @@ class QrController extends Controller
         
         $options = new \chillerlan\QRCode\QROptions([
             'outputInterface'  => \chillerlan\QRCode\Output\QRMarkupSVG::class,
-            'imageBase64'      => false, // Return raw SVG string for download
+            'outputBase64'     => false, // Return raw SVG string for download
             'scale'            => 10,
         ]);
         $content = (new \chillerlan\QRCode\QRCode($options))->render($student->qr_token);

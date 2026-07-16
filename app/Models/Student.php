@@ -28,7 +28,7 @@ class Student extends Model
     {
         $options = new \chillerlan\QRCode\QROptions([
             'outputInterface'  => \chillerlan\QRCode\Output\QRMarkupSVG::class,
-            'imageBase64'      => true,
+            'outputBase64'     => true,
             'scale'            => 10,
         ]);
 

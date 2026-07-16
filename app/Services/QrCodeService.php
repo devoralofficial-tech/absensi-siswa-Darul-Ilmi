@@ -16,7 +16,7 @@ class QrCodeService
 
         $options = new QROptions([
             'outputInterface'  => \chillerlan\QRCode\Output\QRMarkupSVG::class,
-            'imageBase64'      => false,
+            'outputBase64'     => false,
             'scale'            => 10,
         ]);
         $qr = new QRCode($options);
