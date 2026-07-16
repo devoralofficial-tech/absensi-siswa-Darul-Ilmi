@@ -71,7 +71,7 @@
             @else
                 <div style="display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:1rem;background:#f0fdfa;border:1.5px solid #99f6e4;border-radius:14px;color:#0d9488;font-weight:700;font-size:0.875rem;font-family:'Plus Jakarta Sans',sans-serif">
                     <svg style="width:18px;height:18px" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    ✓ Berangkat sudah tercatat
+                    Berangkat sudah tercatat
                 </div>
             @endunless
 
@@ -85,7 +85,7 @@
             @else
                 <div style="display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:1rem;background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:14px;color:#3b82f6;font-weight:700;font-size:0.875rem;font-family:'Plus Jakarta Sans',sans-serif">
                     <svg style="width:18px;height:18px" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    ✓ Pulang sudah tercatat
+                    Pulang sudah tercatat
                 </div>
             @endunless
         </div>
