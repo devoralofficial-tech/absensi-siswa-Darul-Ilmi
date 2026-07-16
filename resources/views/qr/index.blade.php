@@ -15,7 +15,7 @@
                 </svg>
                 Print A4
             </a>
-            <a href="{{ route('qr.downloadAll') }}"
+            <a href="{{ route('qr.downloadAll') }}?t={{ time() }}"
                class="btn-primary" style="width:auto;padding:0.6rem 1rem;font-size:0.8rem;border-radius:12px;gap:0.5rem">
                 <svg style="width:16px;height:16px" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
@@ -51,7 +51,7 @@
                 </div>
 
                 {{-- Download button --}}
-                <a href="{{ route('qr.download', $student->id) }}"
+                <a href="{{ route('qr.download', $student->id) }}?t={{ time() }}"
                    style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 0.875rem;background:rgba(13,148,136,0.1);border:1px solid rgba(13,148,136,0.2);border-radius:10px;color:#2dd4bf;font-size:0.75rem;font-weight:700;text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;transition:all 0.2s"
                    onmouseover="this.style.background='rgba(13,148,136,0.2)'"
                    onmouseout="this.style.background='rgba(13,148,136,0.1)'">
