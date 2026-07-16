@@ -24,20 +24,17 @@ class QrController extends Controller
         $student = \App\Models\Student::findOrFail($id);
         
         $options = new \chillerlan\QRCode\QROptions([
-            'outputInterface'  => \chillerlan\QRCode\Output\QRGdImagePNG::class,
+            'outputInterface'  => \chillerlan\QRCode\Output\QRMarkupSVG::class,
+            'imageBase64'      => false, // Return raw SVG string for download
             'scale'            => 10,
-            'imageTransparent' => false,
         ]);
         $content = (new \chillerlan\QRCode\QRCode($options))->render($student->qr_token);
 
-        // In php-qrcode v6, render() returns a base64 data URI by default
-        if (str_starts_with($content, 'data:image/png;base64,')) {
-            $content = base64_decode(substr($content, 22));
-        }
+        // Remove base64 PNG decoding since we're generating raw SVG
 
         return response($content)
-            ->header('Content-Type', 'image/png')
-            ->header('Content-Disposition', 'attachment; filename="' . $student->nama . '_QR.png"');
+            ->header('Content-Type', 'image/svg+xml')
+            ->header('Content-Disposition', 'attachment; filename="' . $student->nama . '_QR.svg"');
     }
 
     public function downloadAll()
