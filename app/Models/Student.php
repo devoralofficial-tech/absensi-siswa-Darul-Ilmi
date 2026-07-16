@@ -27,10 +27,9 @@ class Student extends Model
     public function getQrImageUrlAttribute(): ?string
     {
         $options = new \chillerlan\QRCode\QROptions([
-            'outputInterface'  => \chillerlan\QRCode\Output\QRGdImagePNG::class,
+            'outputInterface'  => \chillerlan\QRCode\Output\QRMarkupSVG::class,
             'imageBase64'      => true,
             'scale'            => 10,
-            'imageTransparent' => false,
         ]);
 
         return (new \chillerlan\QRCode\QRCode($options))->render($this->qr_token);
