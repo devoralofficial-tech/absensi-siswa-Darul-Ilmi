@@ -10,8 +10,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', fn () => redirect()->route('dashboard'));
 
 Route::get('/setup-db', function() {
-    \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--force' => true, '--seed' => true]);
-    return 'Database berhasil di-migrate dan di-seed di Vercel!';
+    dd([
+        'DB_HOST' => env('DB_HOST'),
+        'DB_DATABASE' => env('DB_DATABASE'),
+        'DB_USERNAME' => env('DB_USERNAME'),
+        'DATABASE_URL' => env('DATABASE_URL'),
+        'ENV_VARS' => $_ENV,
+    ]);
 });
 require __DIR__ . '/auth.php';
 
