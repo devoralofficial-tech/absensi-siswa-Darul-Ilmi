@@ -23,18 +23,12 @@ class QrController extends Controller
     {
         $student = \App\Models\Student::findOrFail($id);
         
-        $options = new \chillerlan\QRCode\QROptions([
-            'outputInterface'  => \chillerlan\QRCode\Output\QRMarkupSVG::class,
-            'outputBase64'     => false, // Return raw SVG string for download
-            'scale'            => 10,
-        ]);
-        $content = (new \chillerlan\QRCode\QRCode($options))->render($student->qr_token);
-
-        // Remove base64 PNG decoding since we're generating raw SVG
+        $url = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' . urlencode($student->qr_token);
+        $content = file_get_contents($url);
 
         return response($content)
-            ->header('Content-Type', 'image/svg+xml')
-            ->header('Content-Disposition', 'attachment; filename="' . $student->nama . '_QR.svg"');
+            ->header('Content-Type', 'image/png')
+            ->header('Content-Disposition', 'attachment; filename="' . $student->nama . '_QR.png"');
     }
 
     public function downloadAll()

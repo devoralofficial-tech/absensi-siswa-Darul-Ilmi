@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
 use ZipArchive;
 
 class QrCodeService
@@ -14,16 +12,17 @@ class QrCodeService
         $zip     = new ZipArchive();
         $zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
-        $options = new QROptions([
-            'outputInterface'  => \chillerlan\QRCode\Output\QRMarkupSVG::class,
-            'outputBase64'     => false,
-            'scale'            => 10,
-        ]);
-        $qr = new QRCode($options);
+        $responses = \Illuminate\Support\Facades\Http::pool(function ($pool) use ($students) {
+            foreach ($students as $student) {
+                $pool->as($student->id)->get('https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' . urlencode($student->qr_token));
+            }
+        });
 
         foreach ($students as $student) {
-            $content = $qr->render($student->qr_token);
-            $zip->addFromString($student->nama . '_' . $student->qr_token . '.svg', $content);
+            $response = $responses[$student->id] ?? null;
+            if ($response && $response->ok()) {
+                $zip->addFromString($student->nama . '_' . $student->qr_token . '.png', $response->body());
+            }
         }
 
         $zip->close();
