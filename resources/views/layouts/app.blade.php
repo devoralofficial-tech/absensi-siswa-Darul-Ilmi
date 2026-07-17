@@ -40,18 +40,7 @@
         {{-- Brand --}}
         <div style="padding:1.25rem;border-bottom:1px solid #e0f5f1">
             <div style="display:flex;align-items:center;gap:0.75rem">
-                <div
-                    style="width:42px;height:42px;background:linear-gradient(135deg,#0d9488,#14b8a6);border-radius:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 14px rgba(13,148,136,0.35)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="7" height="7" />
-                        <rect x="14" y="3" width="7" height="7" />
-                        <rect x="3" y="14" width="7" height="7" />
-                        <path d="M14 17h3v3" />
-                        <path d="M20 14h-3v3h3" />
-                        <path d="M14 14h3" />
-                    </svg>
-                </div>
+                <img src="{{ asset('images/logo.jpg') }}" alt="Logo" style="width:42px;height:42px;border-radius:50%;object-fit:cover;box-shadow:0 4px 14px rgba(13,148,136,0.35);flex-shrink:0">
                 <div>
                     <p
                         style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:0.9rem;color:#0f172a;line-height:1.1">
@@ -130,17 +119,7 @@
         style="position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e0f5f1;box-shadow:0 2px 10px rgba(13,148,136,0.06)">
         <div style="display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem">
             <div style="display:flex;align-items:center;gap:0.625rem">
-                <div
-                    style="width:34px;height:34px;background:linear-gradient(135deg,#0d9488,#14b8a6);border-radius:10px;display:flex;align-items:center;justify-content:center">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="7" height="7" />
-                        <rect x="14" y="3" width="7" height="7" />
-                        <rect x="3" y="14" width="7" height="7" />
-                        <path d="M14 17h3v3" />
-                        <path d="M20 14h-3v3h3" />
-                    </svg>
-                </div>
+                <img src="{{ asset('images/logo.jpg') }}" alt="Logo" style="width:34px;height:34px;border-radius:50%;object-fit:cover">
                 <div>
                     <p
                         style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:0.875rem;color:#0f172a;line-height:1">
