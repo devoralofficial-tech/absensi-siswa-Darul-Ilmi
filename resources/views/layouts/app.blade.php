@@ -40,7 +40,7 @@
         {{-- Brand --}}
         <div style="padding:1.25rem;border-bottom:1px solid #e0f5f1">
             <div style="display:flex;align-items:center;gap:0.75rem">
-                <img src="{{ asset('images/logo.jpg') }}" alt="Logo" style="width:42px;height:42px;border-radius:50%;object-fit:cover;box-shadow:0 4px 14px rgba(13,148,136,0.35);flex-shrink:0">
+                <img src="data:image/jpeg;base64,{{ @base64_encode(@file_get_contents(public_path('images/logo.jpg'))) }}" alt="Logo" style="width:42px;height:42px;border-radius:50%;object-fit:cover;box-shadow:0 4px 14px rgba(13,148,136,0.35);flex-shrink:0">
                 <div>
                     <p
                         style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:0.9rem;color:#0f172a;line-height:1.1">
@@ -119,7 +119,7 @@
         style="position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e0f5f1;box-shadow:0 2px 10px rgba(13,148,136,0.06)">
         <div style="display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem">
             <div style="display:flex;align-items:center;gap:0.625rem">
-                <img src="{{ asset('images/logo.jpg') }}" alt="Logo" style="width:34px;height:34px;border-radius:50%;object-fit:cover">
+                <img src="data:image/jpeg;base64,{{ @base64_encode(@file_get_contents(public_path('images/logo.jpg'))) }}" alt="Logo" style="width:34px;height:34px;border-radius:50%;object-fit:cover">
                 <div>
                     <p
                         style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:0.875rem;color:#0f172a;line-height:1">

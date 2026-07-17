@@ -51,7 +51,7 @@
 
         {{-- School Brand --}}
         <div style="text-align:center;margin-bottom:2rem;position:relative;z-index:1">
-            <img src="{{ asset('images/logo.jpg') }}" alt="Logo" style="width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 8px 28px rgba(13,148,136,0.35);margin-bottom:1.125rem">
+            <img src="data:image/jpeg;base64,{{ @base64_encode(@file_get_contents(public_path('images/logo.jpg'))) }}" alt="Logo" style="width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 8px 28px rgba(13,148,136,0.35);margin-bottom:1.125rem">
             <h1
                 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.875rem;font-weight:900;color:#0f172a;letter-spacing:-0.03em;margin:0 0 0.3rem">
                 Absensi Siswa - SMP IT Darul Ilmi</h1>
