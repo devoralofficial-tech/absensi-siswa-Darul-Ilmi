@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('dashboard'));
 
+// Temporary route to trigger migrations in production
+Route::get('/run-migrations', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+    return "Migrations executed successfully! Please go back to the QR page.";
+});
+
 require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {
