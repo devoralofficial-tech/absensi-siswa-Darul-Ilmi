@@ -16,6 +16,7 @@ class StudentSeeder extends Seeder
         ['nama' => 'Hafidh Fahmy Syahreza', 'nomor_wa' => '6282306097991'],
         ['nama' => 'Fazri Nur Mardiansyah', 'nomor_wa' => '6285357946635'],
         ['nama' => 'Naufal',                'nomor_wa' => '089667922929'],
+        ['nama' => 'Muhammad Sadidan',      'nomor_wa' => '6281319442943'],
     ];
 
     public function run(): void
